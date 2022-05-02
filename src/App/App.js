@@ -35,12 +35,17 @@ import Organization from "./Pages/Organization";
 import OrganizationState from "../Context/Organization/OrganizationState";
 import TemplatesState from "../Context/Templates/TemplatesState";
 import FormikTemplatesFilterContext from "../Context/Formik/FormikTemplatesFilterContext";
+import { isMobile } from "react-device-detect";
 
 const App = () => {
   //
-  const location = useLocation();
 
   const { authState, isAuthorized, isAuthenticating } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!isMobile)
+      return window.location.replace(process.env.REACT_APP_DESKTOP_CLIENT);
+  }, []);
 
   useEffect(() => {
     const _isAuthorized = async () => {
