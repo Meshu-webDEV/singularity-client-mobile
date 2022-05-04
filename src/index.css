@@ -354,6 +354,39 @@ select:focus {
 }
 
 
+.blink-2 {
+  -webkit-animation: blink-2 0.9s cubic-bezier(0.645, 0.045, 0.355, 1.000) infinite both;
+  animation: blink-2 0.9s cubic-bezier(0.645, 0.045, 0.355, 1.000) infinite both;
+}
+
+@-webkit-keyframes blink-2 {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink-2 {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @-webkit-keyframes slide-in-left {
   0% {
     -webkit-transform: translateX(-1000px);

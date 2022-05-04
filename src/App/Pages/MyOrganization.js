@@ -15,6 +15,7 @@ import Header from "../../Components/layouts/Header";
 import MobileBaseLayout from "../../Components/layouts/MobileBaseLayout";
 import SecondaryCard from "../../Components/layouts/SecondaryCard";
 import Button from "../../Components/actions/Button";
+import ButtonLink from "../../Components/actions/ButtonLink";
 import MarkdownInput from "../../Components/forms/MarkdownInput";
 import LoadingWithDots from "../../Components/layouts/LoadingWithDots";
 import EventCard from "../../Components/layouts/EventCard";
@@ -387,22 +388,21 @@ const OrganizationPlaceholder = ({ status, rejection }) => {
             </div>
           </div>
         </div>
-        <div className="h-64 w-full opacity-0 sticky z-10">.</div>
         <div className="text-xs font-light tracking-wide text-whites-dark"></div>
-        <div className="absolute z-40 bg-blacks-light bg-opacity-90 text-xs mt-16 w-11/12 py-8 rounded-md shadow-xl flex justify-center ">
+        <div className="z-40 bg-blacks-light filter brightness-105 text-xs w-11/12 py-8 rounded-md shadow-xl flex justify-center ">
           {status === USER_ORGANIZATION_STATUS.DEFAULT && (
-            <div className=" font-light flex flex-col justify-center items-center">
-              <div className="text-sm uppercase font-medium tracking-wide flex justify-center items-center space-x-1">
-                <div className="w-1.5 h-3 bg-primary-dark"></div>
+            <div className="font-light w-full flex flex-col space-y-10 justify-center items-center px-6">
+              <div className="text-base uppercase font-medium tracking-wide flex justify-center items-center space-x-2">
+                <X />
                 <div>Profile not available.</div>
               </div>
-              <Hr className="text-whites-dark opacity-5 w-3/5 my-2" />
-              <div className="flex flex-col space-y-8 justify-center items-center">
-                <div>
-                  <div className="italic pl-1 self-start text-whites-dark">
+
+              <div className="flex flex-col space-y-8 justify-center items-center self-start">
+                <div className="self-start text-whites-dark">
+                  <span className="font-bold text-sm self-start text-whites-light">
                     Status:
-                  </div>
-                  <span className="font-normal">Not set</span>. Setup your
+                  </span>{" "}
+                  <span className="text-whites-dark">Not set</span>. Setup your
                   organization{" "}
                   <Link
                     to="/dashboard/my-profile/setup-organization"
@@ -411,51 +411,129 @@ const OrganizationPlaceholder = ({ status, rejection }) => {
                     Here
                   </Link>
                 </div>
+                <Hr className="text-whites-dark opacity-5 w-3/5 my-2 self-start ml-4" />
                 {/* Explaining what is an org page */}
-                <div className="p-4">
-                  <div className="font-bold pb-2">
-                    Why setup an organization profile?
+                <div className="">
+                  <div className="font-bold pb-2 text-sm">
+                    Why setup an organization?
                   </div>
-                  <div className="shadow-md p-1 flex flex-col space-y-3">
-                    <p>
-                      - Adds a professional touch to your events & tournaments.
+                  <div className="p-1 flex text-sm flex-col space-y-4">
+                    <p className="flex space-x-2 justify-center items-center self-start">
+                      <span className="flex-shrink-0">
+                        <Check />
+                      </span>
+                      <span className="flex-grow-0">Professional look</span>
                     </p>
-                    <p>
-                      - Groups and associate all your events/tournaments in one
-                      place, Easy and convenient for your viewers.
+                    <p className="flex space-x-2 justify-center items-center self-start">
+                      <span className="flex-shrink-0">
+                        <Check />
+                      </span>
+
+                      <span className="flex-grow-0">
+                        All your events in one place.
+                      </span>
                     </p>
-                    <p>
-                      - Uniqueness using your choice of logo/avatar and name.
+                    <p className="flex space-x-2 justify-center items-center self-start">
+                      <span className="flex-shrink-0">
+                        <Check />
+                      </span>
+                      <span className="flex-grow-0">
+                        Ability to have a unique logo or avatar
+                      </span>
                     </p>
-                    <p>
-                      - Closer to your viewers through optionally adding your
-                      social media links and official website.
+                    <p className="flex space-x-2 justify-center items-center self-start">
+                      <span className="flex-shrink-0">
+                        <Check />
+                      </span>
+                      <span className="flex-grow-0">
+                        Link your website or social medias
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <ButtonLink
+                href="/dashboard/my-profile/setup-organization"
+                variant="success"
+                text="Setup here"
+                icon={
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                }
+                className="px-3 py-1 text-tiny self-end"
+              />
+            </div>
+          )}
+          {status === USER_ORGANIZATION_STATUS.PENDING && (
+            <div className="font-light w-full flex flex-col space-y-10 justify-center items-center">
+              <div className="text-base uppercase font-medium tracking-wide flex justify-center items-center space-x-2">
+                <X />
+                <div>Profile not available yet.</div>
+              </div>
+
+              <div className="flex flex-col space-y-8 justify-center items-center self-start">
+                <div className="self-start px-4 text-whites-dark">
+                  <span className="font-bold text-sm self-start text-whites-light">
+                    Status:
+                  </span>{" "}
+                  Pending review...
+                </div>
+                <Hr className="text-whites-dark opacity-5 w-3/5 my-2 self-start ml-4" />
+                {/* Explaining what is an org page */}
+                <div className="px-4">
+                  <div className="font-bold pb-2 text-sm">
+                    Why setup an organization?
+                  </div>
+                  <div className="p-1 flex text-sm flex-col space-y-4">
+                    <p className="flex space-x-2 justify-center items-center self-start">
+                      <span className="flex-shrink-0">
+                        <Check />
+                      </span>
+                      <span className="flex-grow-0">Professional look</span>
+                    </p>
+                    <p className="flex space-x-2 justify-center items-center self-start">
+                      <span className="flex-shrink-0">
+                        <Check />
+                      </span>
+
+                      <span className="flex-grow-0">
+                        All your events in one place.
+                      </span>
+                    </p>
+                    <p className="flex space-x-2 justify-center items-center self-start">
+                      <span className="flex-shrink-0">
+                        <Check />
+                      </span>
+                      <span className="flex-grow-0">
+                        Ability to have a unique logo or avatar
+                      </span>
+                    </p>
+                    <p className="flex space-x-2 justify-center items-center self-start">
+                      <span className="flex-shrink-0">
+                        <Check />
+                      </span>
+                      <span className="flex-grow-0">
+                        Link your website or social medias
+                      </span>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
           )}
-          {status === USER_ORGANIZATION_STATUS.PENDING && (
-            <div className="h-3/4 font-light flex flex-col justify-center items-center">
-              <div className="text-sm uppercase py-4 font-medium tracking-wide flex justify-center items-center space-x-1">
-                <div className="w-1.5 h-3 bg-primary-dark"></div>
-                <div>Profile not available.</div>
-              </div>
-              <Hr className="text-whites-dark opacity-10 w-9/12 my-2" />
-              <div className="italic pl-1 self-start text-whites-dark">
-                Status:
-              </div>
-              <div>
-                <span className="font-normal uppercase">
-                  Application pending review...
-                </span>
-              </div>
-            </div>
-          )}
           {status === USER_ORGANIZATION_STATUS.REJECTED && (
             <div className="h-3/4 font-light flex flex-col justify-center items-center">
-              <div className="text-sm uppercase py-4 font-medium tracking-wide flex justify-center items-center space-x-1">
+              <div className="text-sm uppercase py-4 font-medium tracking-wide flex justify-center items-center space-x-2">
                 <div className="w-1.5 h-3 bg-primary-dark"></div>
                 <div>Profile not available.</div>
               </div>
@@ -588,5 +666,43 @@ const EditBio = () => {
         </div>
       </SecondaryCard>
     </MobileBaseLayout>
+  );
+};
+
+const Check = () => {
+  return (
+    <div className="w-6 h-6 rounded-full flex justify-center items-center bg-secondary-light bg-opacity-10 shadow-md text-whites-light">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-4 w-4 text-success"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fillRule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </div>
+  );
+};
+
+const X = () => {
+  return (
+    <div className="w-6 h-6 rounded-full flex justify-center items-center bg-primary-light bg-opacity-10 shadow-md text-whites-light">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-4 w-4 text-primary-light"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fillRule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </div>
   );
 };

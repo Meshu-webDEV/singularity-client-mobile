@@ -36,6 +36,8 @@ import OrganizationState from "../Context/Organization/OrganizationState";
 import TemplatesState from "../Context/Templates/TemplatesState";
 import FormikTemplatesFilterContext from "../Context/Formik/FormikTemplatesFilterContext";
 import { isMobile } from "react-device-detect";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import TermsConditions from "./Pages/TermsConditions";
 
 const App = () => {
   //
@@ -118,6 +120,12 @@ const App = () => {
         </Route>
         <Route path="/404">
           <NotFound />
+        </Route>
+        <Route path="/privacy-policy">
+          <PrivacyPolicy />
+        </Route>
+        <Route path="/terms-conditions">
+          <TermsConditions />
         </Route>
         <Route exact path="/:id">
           <Event />
